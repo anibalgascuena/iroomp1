@@ -3,75 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Room - iRoom UAH</title>
+    <title>Smart Room - Servicios Telemáticos</title>
+    <!-- Vinculación opcional a hoja de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+    <!-- Encabezado del Sitio -->
     <header>
-        <h1>Servicios Telemáticos - iRoom</h1>
-        <p>Panel de Monitorización y Control de Smart Room</p>
-        <hr>
+        <h1>Smart Room (iRoom)</h1>
+        <p>Servicios Telemáticos - Universidad de Alcalá</p>
     </header>
 
+    <!-- Barra de Navegación Principal -->
+    <nav>
+        <ul>
+            <li><a href="#estado">Estado General</a></li>
+            <li><a href="#actuadores">Actuadores</a></li>
+            <li><a href="#sensores">Sensores</a></li>
+            <li><a href="#acerca">Acerca de</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
     <main>
-        <!-- Sección de Estado de la Habitación -->
-        <section id="estado">
-       
-     <h2>Estado de los Sensores</h2>
-            <ul>
-                <li><strong>Temperatura actual:</strong> 22 ºC</li>
-                <li><strong>Luminosidad:</strong> 75%</li>
-                <li><strong>Presencia:</strong> Detectada</li>
-                <li><strong>Estado Puerta:</strong> Cerrada</li>
-            </ul>
-        </section>
-
-        <hr>
-
-        <!-- Sección de Formulario de Control -->
-        <section id="control">
-            <h2>Control de Actuadores</h2>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Configuración de Parámetros</legend>
-
-                    <p>
-                        <label for="temp-deseada">Temperatura deseada (ºC):</label><br>
-                        <input type="number" id="temp-deseada" name="temperatura" min="15" max="30" value="21">
-                    </p>
-
-                    <p>
-                        <label for="nivel-luz">Nivel de Iluminación:</label><br>
-                        <input type="range" id="nivel-luz" name="iluminacion" min="0" max="100" value="75">
-                    </p>
-
-                    <p>
-                        <label for="modo-operacion">Modo de Operación:</label><br>
-                        <select id="modo-operacion" name="modo">
-                            <option value="auto">Automático</option>
-                            <option value="eco">Eco</option>
-                            <option value="confort">Confort</option>
-                        </select>
-                    </p>
-
-                    <p>
-                        <label>
-                            <input type="checkbox" name="climatizacion" value="on" checked>
-                            Activar Sistema de Climatización
-                        </label>
-                    </p>
-
-                    <button type="submit">Enviar Configuración</button>
-                </fieldset>
-            </form>
-        </section>
+        <!-- Las secciones del proyecto se irán agregando en los siguientes pasos -->
     </main>
 
-    <hr>
-
+    <!-- Pie de Página -->
     <footer>
-        <p>&copy; 2026 - Universidad de Alcalá (UAH) | Asignatura de Servicios Telemáticos</p>
+        <p>&copy; 2026 iRoom Project - Práctica Servicios Telemáticos</p>
     </footer>
 
 </body>
 </html>
+
