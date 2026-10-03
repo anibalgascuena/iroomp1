@@ -3,25 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iRoom - Smart Room</title>
+    <title>Smart Room - iRoom UAH</title>
 </head>
 <body>
+
     <header>
-        <h1>Panel de Control - Smart Room</h1>
-        <p>Servicios Telemáticos - Práctica 1</p>
+        <h1>Servicios Telemáticos - iRoom</h1>
+        <p>Panel de Monitorización y Control de Smart Room</p>
         <hr>
     </header>
 
     <main>
+        <!-- Sección de Estado de la Habitación -->
         <section id="estado">
-            <h2>Estado del Sistema</h2>
-            <p>El servidor web Apache está configurado y respondiendo correctamente.</p>
+       
+     <h2>Estado de los Sensores</h2>
+            <ul>
+                <li><strong>Temperatura actual:</strong> 22 ºC</li>
+                <li><strong>Luminosidad:</strong> 75%</li>
+                <li><strong>Presencia:</strong> Detectada</li>
+                <li><strong>Estado Puerta:</strong> Cerrada</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Sección de Formulario de Control -->
+        <section id="control">
+            <h2>Control de Actuadores</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Configuración de Parámetros</legend>
+
+                    <p>
+                        <label for="temp-deseada">Temperatura deseada (ºC):</label><br>
+                        <input type="number" id="temp-deseada" name="temperatura" min="15" max="30" value="21">
+                    </p>
+
+                    <p>
+                        <label for="nivel-luz">Nivel de Iluminación:</label><br>
+                        <input type="range" id="nivel-luz" name="iluminacion" min="0" max="100" value="75">
+                    </p>
+
+                    <p>
+                        <label for="modo-operacion">Modo de Operación:</label><br>
+                        <select id="modo-operacion" name="modo">
+                            <option value="auto">Automático</option>
+                            <option value="eco">Eco</option>
+                            <option value="confort">Confort</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label>
+                            <input type="checkbox" name="climatizacion" value="on" checked>
+                            Activar Sistema de Climatización
+                        </label>
+                    </p>
+
+                    <button type="submit">Enviar Configuración</button>
+                </fieldset>
+            </form>
         </section>
     </main>
 
+    <hr>
+
     <footer>
-        <hr>
-        <p>&copy; 2026 - Universidad de Alcalá</p>
+        <p>&copy; 2026 - Universidad de Alcalá (UAH) | Asignatura de Servicios Telemáticos</p>
     </footer>
+
 </body>
 </html>
