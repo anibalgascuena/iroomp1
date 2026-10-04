@@ -3,37 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Room - Servicios Telemáticos</title>
-    <!-- Vinculación opcional a hoja de estilos CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Smart Room Project</title>
+    <link rel="stylesheet" href="css/iroom.css">
 </head>
 <body>
 
-    <!-- Encabezado del Sitio -->
-    <header>
-        <h1>Smart Room (iRoom)</h1>
-        <p>Servicios Telemáticos - Universidad de Alcalá</p>
-    </header>
-
-    <!-- Barra de Navegación Principal -->
-    <nav>
-        <ul>
-            <li><a href="#estado">Estado General</a></li>
-            <li><a href="#actuadores">Actuadores</a></li>
-            <li><a href="#sensores">Sensores</a></li>
-            <li><a href="#acerca">Acerca de</a></li>
-        </ul>
-    </nav>
-
-    <!-- Contenido Principal -->
     <main>
-        <!-- Las secciones del proyecto se irán agregando en los siguientes pasos -->
-    </main>
 
-    <!-- Pie de Página -->
-    <footer>
-        <p>&copy; 2026 iRoom Project - Práctica Servicios Telemáticos</p>
-    </footer>
+        <!-- ============================================================
+             REGIÓN 1: ENCABEZADO
+             Ref. S2GG p.6 — <header> al principio del documento
+             ============================================================ -->
+        <header>
+            <h1>Smart Room Project</h1>
+        </header>
+
+        <!-- ============================================================
+             REGIÓN 2: NAVEGACIÓN
+             Ref. S2GG p.6 — <nav> para enlaces de navegación
+             Ref. S2GG p.43 — lista no numerada <ul><li>
+             Ref. S2GG p.46 — enlaces <a href>
+             ============================================================ -->
+        <div class="barra-superior">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="config.html">Configuración</a></li>
+                    <li><a href="minombre.html">Mi nombre</a></li>
+                </ul>
+            </nav>
+
+            <aside id="info-usuario">
+                <p>Información</p>
+            </aside>
+        </div>
+
+        <!-- ============================================================
+             CONTENIDO EN 2 COLUMNAS (escritorio) / 1 COLUMNA (móvil)
+             Ref. S2GG p.9-11 — Layout con capas
+             ============================================================ -->
+        <div class="contenido">
+
+            <!-- ========================================================
+                 REGIÓN 4: DATOS DE LA HABITACIÓN (columna izquierda)
+                 Ref. S2GG p.6 — <section> grupo temático de contenido
+                 Ref. S2GG p.43 — datos en lista
+                 Ref. S2GG p.16 — imagen con alt
+                 Ref. S2GG p.46 — enlace con target="_blank"
+                 ======================================================== -->
+            <section id="datos-habitacion">
+                <h2>Datos de la habitación</h2>
+
+                <ul>
+                    <li><strong>País:</strong> España</li>
+                    <li><strong>Ciudad:</strong> Alcalá de Henares</li>
+                    <li><strong>Localización:</strong>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Universidad+de+Alcalá"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                           Ver ubicación en Google Maps
+                        </a>
+                    </li>
+                    <li><strong>Capacidad:</strong> 2 personas</li>
+                    <li><strong>Tipo:</strong> Sala inteligente</li>
+                </ul>
+
+                <img src="images/habitacion.jpg"
+                     alt="Fotografía de la Smart Room con sensores instalados en la pared"
+                     width="300">
+            </section>
+
+            <!-- ========================================================
+                 REGIÓN 5: DATOS DE LOS SENSORES (columna derecha)
+                 Ref. S2GG p.6 — <section>
+                 Ref. S2GG p.44-45 — tabla con thead/tbody/th/td
+                 ======================================================== -->
+            <section id="datos-sensores">
+                <h2>Datos de los sensores</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sensor</th>
+                            <th>Valor</th>
+                            <th>Unidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Temperatura</td><td>22</td><td>°C</td></tr>
+                        <tr><td>Humedad</td><td>45</td><td>%</td></tr>
+                        <tr><td>Nivel de sonido</td><td>38</td><td>dB</td></tr>
+                        <tr><td>Nivel de luz</td><td>320</td><td>lux</td></tr>
+                        <tr><td>Movimiento</td><td>No</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+
+        <!-- ============================================================
+             REGIÓN 6: PIE
+             Ref. S2GG p.6 — <footer> pie del documento
+             ============================================================ -->
+        <footer>
+            <p>Universidad de Alcalá</p>
+        </footer>
+
+    </main>
 
 </body>
 </html>

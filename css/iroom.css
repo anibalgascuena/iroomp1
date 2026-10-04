@@ -1,0 +1,249 @@
+/* ================================================================
+   HOJA DE ESTILOS EXTERNA — iroom.css
+   Ref. S3GG p.3  — sintaxis: selector { propiedad: valor; }
+   Ref. S3GG p.7  — hoja externa enlazada con <link>
+   ================================================================ */
+
+
+/* ================================================================
+   1. RESET Y BASE
+   Ref. S3GG p.9-10 — box model (margin/border/padding/content)
+   ================================================================ */
+* {
+    box-sizing: border-box;   /* El width incluye padding y border */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Ref. S3GG p.15 — propiedades de fuentes */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222;
+    background-color: #eef2f7;
+    padding: 1rem;
+}
+
+
+/* ================================================================
+   2. CONTENEDOR PRINCIPAL <main>
+   ================================================================ */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;            /* Ref. S3GG p.11 — border-radius */
+    padding: 1rem;
+    /* Ref. S3GG p.11 — box-shadow */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================================================================
+   3. ENCABEZADO <header>
+   Ref. S3GG p.14-15 — color, font-size, font-weight, text-align
+   ================================================================ */
+header {
+    text-align: center;
+    border-bottom: 2px solid #1a3d7c;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    /* Jerarquía visual: título más grande, más grueso, color distintivo */
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a3d7c;
+}
+
+
+/* ================================================================
+   4. BARRA SUPERIOR: nav + aside en la misma fila
+   Ref. S3GG p.6 — selector descendiente (nav ul, nav a)
+   ================================================================ */
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    background-color: #f7f9fc;
+    border: 1px dashed #999;
+    border-radius: 6px;
+}
+
+nav ul {
+    /* Ref. S3GG p.18 — list-style */
+    list-style: none;
+    display: flex;
+    gap: 0.8rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1a3d7c;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid #1a3d7c;
+    border-radius: 4px;
+    /* Ref. S3GG p.32 — transition para suavizar el cambio */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #1a3d7c;
+    color: #ffffff;
+}
+
+/* Ref. S3GG p.22 — outline para foco visible (accesibilidad teclado) */
+nav a:focus {
+    outline: 3px solid #ff9900;
+    outline-offset: 2px;
+}
+
+
+/* ================================================================
+   5. REGIÓN DE INFORMACIÓN DINÁMICA <aside>
+   ================================================================ */
+#info-usuario {
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+
+/* ================================================================
+   6. LAYOUT DE CONTENIDO: 2 COLUMNAS
+   Ref. S3GG p.19-20 — columnas (aquí usamos CSS Grid, más moderno)
+   ================================================================ */
+.contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ================================================================
+   7. SECCIONES <section>
+   ================================================================ */
+section {
+    border: 1px dashed #999;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+section h2 {
+    /* Jerarquía: h2 más pequeño que h1 pero con color y borde inferior */
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1a3d7c;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* ================================================================
+   8. LISTA DE DATOS DE LA HABITACIÓN
+   Ref. S3GG p.18 — list-style: none
+   ================================================================ */
+#datos-habitacion ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+#datos-habitacion li {
+    padding: 0.25rem 0;
+}
+
+#datos-habitacion a {
+    color: #0066cc;
+    font-weight: 600;
+}
+
+#datos-habitacion a:hover {
+    text-decoration: underline;
+}
+
+#datos-habitacion img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    /* Ref. S3GG p.11 — box-shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================================================================
+   9. TABLA DE SENSORES
+   Ref. S3GG p.17 — propiedades de tablas: border-collapse
+   ================================================================ */
+#datos-sensores table {
+    width: 100%;
+    border-collapse: collapse;   /* Ref. S3GG p.17 */
+}
+
+#datos-sensores th,
+#datos-sensores td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+}
+
+#datos-sensores th {
+    background-color: #e8eef7;
+    color: #1a3d7c;
+    font-weight: bold;
+}
+
+#datos-sensores tbody tr:nth-child(even) {
+    background-color: #fafcff;
+}
+
+
+/* ================================================================
+   10. PIE <footer>
+   ================================================================ */
+footer {
+    text-align: center;
+    border-top: 2px solid #1a3d7c;
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+/* ================================================================
+   11. RESPONSIVE — MEDIA QUERIES
+   Ref. S3GG p.16 — @media para distintos tamaños de pantalla
+   Objetivo: en pantallas pequeñas, las 2 columnas pasan a 1
+   ================================================================ */
+@media (max-width: 700px) {
+
+    .contenido {
+        grid-template-columns: 1fr;   /* 1 columna */
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section h2 {
+        font-size: 1.15rem;
+    }
+}
+
