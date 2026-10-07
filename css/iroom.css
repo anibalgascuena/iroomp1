@@ -1,193 +1,103 @@
-/* ================================================================
-   iroom.css — Hoja de estilos externa de Smart Room
-   Práctica 1 · Servicios Telemáticos · UAH
-   ================================================================ */
-
-
-/* ================================================================
-   1. RESET UNIVERSAL
-   El selector * afecta a TODOS los elementos.
-   ================================================================ */
+/* RESET UNIVERSAL */
 * {
-    box-sizing: border-box;
-    /* box-sizing: border-box → el width incluye padding + border.
-       Por defecto (content-box), width:100px + padding:10px + border:1px
-       da 122px reales. Con border-box, da 100px. */
-
-    margin: 0;
-    padding: 0;
-    /* Elimina márgenes y rellenos por defecto del navegador. */
+    box-sizing: border-box;   /* El ancho incluye padding y border. */
+    margin: 0;                /* Elimina márgenes por defecto. */
+    padding: 0;               /* Elimina rellenos por defecto. */
 }
 
-
-/* ================================================================
-   2. ESTILOS BASE DEL <body>
-   ================================================================ */
+/* ESTILOS BASE DEL BODY */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* Lista de fuentes separadas por comas: si no hay Arial,
-       prueba Helvetica; si no, cualquier sans-serif. */
-
-    font-size: 16px;
-    line-height: 1.5;
-    /* Altura de línea = 1.5 × tamaño de fuente. Mejora legibilidad. */
-
-    color: #222;
-    /* Color del texto en hexadecimal (#RRGGBB). */
-
-    background-color: #eef2f7;
+    font-family: Arial, Helvetica, sans-serif;  /* Fuentes preferidas en orden. */
+    font-size: 16px;                            /* Tamaño base. */
+    line-height: 1.5;                           /* Altura de línea. */
+    color: #222;                                /* Color del texto. */
+    background-color: #eef2f7;                  /* Fondo general. */
     padding: 1rem;
-    /* 1rem = 1 × tamaño de fuente raíz (16px por defecto). */
 }
 
-
-/* ================================================================
-   3. CONTENEDOR PRINCIPAL <main>
-   ================================================================ */
+/* CONTENEDOR PRINCIPAL */
 main {
-    max-width: 1100px;
-    /* Ancho máximo: en pantallas grandes no se estira más. */
-
-    margin: 0 auto;
-    /* Truco clásico para CENTRAR un bloque horizontalmente:
-       auto reparte el espacio sobrante a izquierda y derecha. */
-
+    max-width: 1100px;                          /* Ancho máximo. */
+    margin: 0 auto;                             /* Centrado horizontal. */
     background-color: #ffffff;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    /* Esquinas redondeadas. */
-
+    border-radius: 8px;                         /* Esquinas redondeadas. */
     padding: 1rem;
-
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    /* Sombra: 0 desplaz. horizontal, 2px vertical, 6px desenfoque,
-       color negro con 8% de opacidad. */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);  /* Sombra suave. */
 }
 
-
-/* ================================================================
-   4. ENCABEZADO <header>
-   ================================================================ */
+/* ENCABEZADO */
 header {
     text-align: center;
-    border-bottom: 2px solid #1a3d7c;
+    border-bottom: 2px solid #1a3d7c;           /* Línea inferior azul. */
     padding: 1rem 0;
-    /* Arriba/abajo 1rem, izquierda/derecha 0. */
     margin-bottom: 1rem;
 }
-
 header h1 {
-    /* SELECTOR DESCENDIENTE: todos los <h1> dentro de <header>. */
     font-size: 2rem;
-    /* El doble del tamaño base. Jerarquía visual. */
-
     font-weight: bold;
     color: #1a3d7c;
-    /* Azul oscuro para dar jerarquía visual. */
 }
 
-
-/* ================================================================
-   5. BARRA SUPERIOR (nav + aside en la misma fila)
-   ================================================================ */
+/* BARRA SUPERIOR (nav + aside) */
 .barra-superior {
-    /* SELECTOR DE CLASE: aplica a class="barra-superior". */
-    display: flex;
-    /* Activa Flexbox: coloca los hijos en fila. */
-
-    justify-content: space-between;
-    /* Reparte el espacio sobrante entre los hijos:
-       uno a la izquierda, otro a la derecha. */
-
-    align-items: center;
-    /* Alinea verticalmente al centro. */
-
-    flex-wrap: wrap;
-    /* Si no caben, saltan a la línea siguiente. */
-
+    display: flex;                              /* Coloca hijos en fila. */
+    justify-content: space-between;             /* Uno a cada lado. */
+    align-items: center;                        /* Centra verticalmente. */
+    flex-wrap: wrap;                            /* Si no caben, saltan. */
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
     background-color: #f7f9fc;
-    border: 1px dashed #999;
-    /* Borde PUNTEADO (dashed) gris. */
+    border: 1px dashed #999;                    /* Borde punteado. */
     border-radius: 6px;
 }
 
 nav ul {
-    list-style: none;
-    /* Quita los puntos de la lista. */
+    list-style: none;                           /* Sin puntos. */
     display: flex;
     gap: 0.8rem;
 }
-
 nav a {
-    text-decoration: none;
-    /* Quita el subrayado por defecto de los enlaces. */
+    text-decoration: none;                      /* Sin subrayado. */
     color: #1a3d7c;
     font-weight: 600;
     padding: 0.35rem 0.7rem;
     border: 1px solid #1a3d7c;
     border-radius: 4px;
-
     transition: background-color 0.2s ease, color 0.2s ease;
-    /* Animación suave de 0.2s al cambiar color. */
 }
-
 nav a:hover {
-    /* PSEUDOCLASE :hover → se aplica al pasar el ratón. */
-    background-color: #1a3d7c;
+    background-color: #1a3d7c;                  /* Al pasar ratón. */
     color: #ffffff;
 }
-
 nav a:focus {
-    /* PSEUDOCLASE :focus → se aplica al enfocar con Tab.
-       Mejora la accesibilidad: foco visible para navegación por teclado. */
-    outline: 3px solid #ff9900;
-    /* outline NO ocupa espacio (a diferencia de border). */
+    outline: 3px solid #ff9900;                 /* Borde naranja al enfocar (Tab). */
     outline-offset: 2px;
-    /* Separación entre el borde naranja y el elemento. */
 }
 
-
-/* ================================================================
-   6. INFO DE USUARIO <aside>
-   ================================================================ */
+/* INFO DE USUARIO */
 #info-usuario {
-    /* SELECTOR DE ID: aplica al elemento con id="info-usuario".
-       Solo debe haber UNO con ese id. */
     font-style: italic;
     color: #555;
     font-size: 0.95rem;
 }
 
-
-/* ================================================================
-   7. GRID DE 2 COLUMNAS (contenido principal)
-   ================================================================ */
+/* GRID DE 2 COLUMNAS */
 .contenido {
     display: grid;
-    /* Grid Layout: 2D, más moderno que Flexbox para columnas. */
-
-    grid-template-columns: 1fr 1fr;
-    /* Dos columnas de 1 fracción cada una (50%-50%).
-       "1fr" = fracción del espacio disponible. */
-
+    grid-template-columns: 1fr 1fr;             /* Dos columnas iguales. */
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-
-/* ================================================================
-   8. SECCIONES <section>
-   ================================================================ */
+/* SECCIONES */
 section {
     border: 1px dashed #999;
     border-radius: 6px;
     padding: 1rem;
     background-color: #ffffff;
 }
-
 section h2 {
     font-size: 1.3rem;
     font-weight: bold;
@@ -197,77 +107,44 @@ section h2 {
     border-bottom: 1px solid #ddd;
 }
 
-
-/* ================================================================
-   9. LISTA DE DATOS DE LA HABITACIÓN
-   ================================================================ */
+/* LISTA DE LA HABITACIÓN */
 #datos-habitacion ul {
     list-style: none;
     margin-bottom: 1rem;
 }
-
-#datos-habitacion li {
-    padding: 0.25rem 0;
-}
-
-#datos-habitacion a {
-    color: #0066cc;
-    font-weight: 600;
-}
-
-#datos-habitacion a:hover {
-    text-decoration: underline;
-}
-
+#datos-habitacion li { padding: 0.25rem 0; }
+#datos-habitacion a { color: #0066cc; font-weight: 600; }
+#datos-habitacion a:hover { text-decoration: underline; }
 #datos-habitacion img {
-    display: block;
-    /* Hace que la imagen sea un bloque (ocupa toda la línea). */
-
-    max-width: 100%;
-    /* Nunca más ancha que su contenedor → RESPONSIVE. */
-
-    height: auto;
-    /* Altura automática manteniendo proporción. */
-
+    display: block;                             /* Ocupa su propia línea. */
+    max-width: 100%;                            /* Nunca más ancha que su contenedor. */
+    height: auto;                               /* Altura proporcional. */
     border-radius: 6px;
     margin-top: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-
-/* ================================================================
-   10. TABLA DE SENSORES
-   ================================================================ */
+/* TABLA DE SENSORES */
 #datos-sensores table {
     width: 100%;
-    border-collapse: collapse;
-    /* Une los bordes adyacentes de celdas (sin doble línea). */
+    border-collapse: collapse;                  /* Une los bordes de celdas. */
 }
-
 #datos-sensores th,
 #datos-sensores td {
-    /* SELECTOR MÚLTIPLE: aplica a th Y a td. */
     border: 1px solid #ccc;
     padding: 0.5rem 0.7rem;
     text-align: left;
 }
-
 #datos-sensores th {
     background-color: #e8eef7;
     color: #1a3d7c;
     font-weight: bold;
 }
-
 #datos-sensores tbody tr:nth-child(even) {
-    /* PSEUDOCLASE ESTRUCTURAL :nth-child(even) → filas PARES.
-       Crea efecto cebra (filas alternas con color). */
-    background-color: #fafcff;
+    background-color: #fafcff;                  /* Filas pares (efecto cebra). */
 }
 
-
-/* ================================================================
-   11. PIE <footer>
-   ================================================================ */
+/* PIE DE PÁGINA */
 footer {
     text-align: center;
     border-top: 2px solid #1a3d7c;
@@ -276,45 +153,15 @@ footer {
     color: #555;
 }
 
-
-/* ================================================================
-   12. RESPONSIVE — MEDIA QUERIES
-   OBJETIVO: en pantallas pequeñas, las 2 columnas se convierten en 1.
-   ================================================================ */
+/* RESPONSIVE: pantallas ≤ 700px */
 @media (max-width: 700px) {
-    /* Este bloque SOLO se aplica cuando el ancho de pantalla
-       es menor o igual a 700px. */
-
-    .contenido {
-        grid-template-columns: 1fr;
-        /* De 2 columnas → 1 columna. */
-    }
-
-    header h1 {
-        font-size: 1.5rem;
-        /* Título más pequeño en móvil. */
-    }
-
-    nav ul {
-        flex-direction: column;
-        /* El menú pasa a vertical. */
-        align-items: flex-start;
-    }
-
-    section h2 {
-        font-size: 1.15rem;
-    }
+    .contenido { grid-template-columns: 1fr; }  /* 2 → 1 columna. */
+    header h1 { font-size: 1.5rem; }
+    nav ul { flex-direction: column; align-items: flex-start; }
+    section h2 { font-size: 1.15rem; }
 }
 
-
-
-/* ================================================================
-   13. FORMULARIO DE CONFIGURACIÓN
-   Estilos específicos de config.html.
-   ================================================================ */
-
-/* Contenedor Grid de 2 columnas para el formulario.
-   En móvil pasa a 1 columna. */
+/* FORMULARIO: GRID DE 2 COLUMNAS */
 .form-columnas {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -322,17 +169,16 @@ footer {
     margin-bottom: 1.5rem;
 }
 
-/* Estilo de las etiquetas <label> */
+/* ETIQUETAS DEL FORMULARIO */
 label {
-    display: block;
+    display: block;                             /* Cada label en su línea. */
     margin-top: 0.8rem;
     margin-bottom: 0.2rem;
     font-weight: 600;
     color: #1a3d7c;
 }
 
-/* Estilo común a todos los campos de texto/número/url/archivo
-   y al datalist asociado */
+/* CAMPOS DE ENTRADA */
 input[type="text"],
 input[type="url"],
 input[type="password"],
@@ -343,39 +189,32 @@ input[type="file"] {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    font-family: inherit;
-    /* "inherit" hereda la fuente del <body> */
+    font-family: inherit;                       /* Hereda la fuente del body. */
     background-color: #fafcff;
 }
-
-/* Al enfocar un campo con Tab, aparece borde azul y sombra.
-   Mejora la accesibilidad del formulario */
 input:focus {
-    outline: 2px solid #1a3d7c;
+    outline: 2px solid #1a3d7c;                 /* Al enfocar con Tab. */
     outline-offset: 1px;
     border-color: #1a3d7c;
 }
 
-/* Grupo de checkbox + etiqueta en la misma línea */
+/* CHECKBOXES */
 .checkbox-group {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin: 0.3rem 0;
 }
-
 .checkbox-group input[type="checkbox"] {
-    /* El checkbox no debe ser ancho completo */
-    width: auto;
+    width: auto;                                /* No ocupa todo el ancho. */
     margin: 0;
 }
-
 .checkbox-group label {
     margin: 0;
     font-weight: normal;
 }
 
-/* Subtítulo interno de la sección de sensores */
+/* SUBTÍTULO "Configure alertas" */
 #config-sensores h3 {
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
@@ -385,7 +224,7 @@ input:focus {
     padding-bottom: 0.3rem;
 }
 
-/* El <output> se muestra como un bloque con aspecto de campo */
+/* OUTPUT (diferencia de temperaturas) */
 output {
     display: block;
     margin-top: 0.3rem;
@@ -399,22 +238,11 @@ output {
     font-size: 1.1rem;
 }
 
-/* Mensajes de error y de éxito */
-.mensaje-error {
-    color: #c00;
-    font-size: 0.9rem;
-    min-height: 1.2em;
-    margin-top: 0.5rem;
-}
+/* MENSAJES DE ERROR Y ÉXITO */
+.mensaje-error { color: #c00; font-size: 0.9rem; min-height: 1.2em; margin-top: 0.5rem; }
+.mensaje-ok { color: #060; font-size: 1rem; font-weight: bold; margin-top: 0.5rem; }
 
-.mensaje-ok {
-    color: #060;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 0.5rem;
-}
-
-/* Botón de envío */
+/* BOTÓN DE ENVÍO */
 button[type="submit"] {
     display: inline-block;
     padding: 0.6rem 1.4rem;
@@ -427,17 +255,10 @@ button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+button[type="submit"]:hover { background-color: #0f2649; }
+button[type="submit"]:focus { outline: 3px solid #ff9900; outline-offset: 2px; }
 
-button[type="submit"]:hover {
-    background-color: #0f2649;
-}
-
-button[type="submit"]:focus {
-    outline: 3px solid #ff9900;
-    outline-offset: 2px;
-}
-
-/* Contenedor del botón y mensaje de envío */
+/* CONTENEDOR DEL BOTÓN Y MENSAJE */
 .form-acciones {
     text-align: center;
     margin-top: 1rem;
@@ -445,43 +266,21 @@ button[type="submit"]:focus {
     border-top: 1px solid #eee;
 }
 
-/* Enlace "Volver a la página principal" */
-.volver {
-    text-align: center;
-    margin-top: 1.5rem;
-}
+/* ENLACE "VOLVER" */
+.volver { text-align: center; margin-top: 1.5rem; }
+.volver a { color: #1a3d7c; font-weight: 600; text-decoration: none; }
+.volver a:hover { text-decoration: underline; }
 
-.volver a {
-    color: #1a3d7c;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.volver a:hover {
-    text-decoration: underline;
-}
-
-
-/* ================================================================
-   14. RESPONSIVE del formulario
-   En móvil, las 2 columnas pasan a 1.
-   ================================================================ */
+/* RESPONSIVE DEL FORMULARIO */
 @media (max-width: 700px) {
-    .form-columnas {
-        grid-template-columns: 1fr;
-    }
+    .form-columnas { grid-template-columns: 1fr; }
 }
 
-
-
-/* ================================================================
-   15. SECCIÓN "MI NOMBRE"
-   ================================================================ */
+/* SECCIÓN "MI NOMBRE" */
 #seccion-nombre {
     max-width: 500px;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1.5rem auto;                 /* Centrado. */
 }
-
 #seccion-nombre input {
     width: 100%;
     padding: 0.5rem 0.7rem;
@@ -491,10 +290,8 @@ button[type="submit"]:focus {
     font-family: inherit;
     background-color: #fafcff;
 }
-
 #seccion-nombre input:focus {
     outline: 2px solid #1a3d7c;
     outline-offset: 1px;
     border-color: #1a3d7c;
 }
-

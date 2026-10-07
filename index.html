@@ -1,123 +1,66 @@
+cat > ~/iroomp1/index.html << 'EOF'
 <!DOCTYPE html>
-<!-- ============================================================
-     index.html — Página principal de Smart Room
-     Práctica 1 · Servicios Telemáticos · UAH
-
-     REGIONES DE LA PÁGINA:
-     1. <header>  — Título principal
-     2. <nav>     — Menú de navegación
-     3. <aside>   — Información dinámica del usuario
-     4. <section> — Datos de la habitación (columna izquierda)
-     5. <section> — Datos de los sensores (columna derecha)
-     6. <footer>  — Pie de página
-     7. <main>    — Contenedor principal de todo lo anterior
-     ============================================================ -->
-
+<!-- Declara que el documento es HTML5. Sin esto el navegador entra en modo compatibilidad antiguo. -->
 <html lang="es">
-<!-- lang="es" indica el idioma del documento.
-     Ayuda a lectores de pantalla y traductores automáticos. -->
+<!-- Elemento raíz. lang="es" indica idioma español. -->
 
 <head>
-    <!-- Zona <head>: metadatos. NO se ve en la página,
-         pero el navegador y los buscadores la usan. -->
-
+<!-- Cabecera: aquí van metadatos, no contenido visible. -->
     <meta charset="UTF-8">
-    <!-- Codificación de caracteres. UTF-8 incluye acentos, ñ, €, etc. -->
-
+    <!-- Codificación de caracteres. UTF-8 incluye acentos, ñ, €. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Necesario para que la página se adapte a móviles.
-         Sin esto, un iPhone mostraría la web como si fuera de escritorio. -->
-
+    <!-- Adapta la página al ancho del dispositivo. Necesario para móvil. -->
     <title>Smart Room Project</title>
-    <!-- Texto que aparece en la pestaña del navegador y en Google. -->
-
+    <!-- Texto de la pestaña del navegador. -->
     <link rel="stylesheet" href="css/iroom.css">
-    <!-- Enlaza la hoja de estilos EXTERNA.
-         Separar HTML (contenido) y CSS (presentación) es una buena
-         práctica: permite cambiar el aspecto sin tocar el contenido. -->
+    <!-- Enlaza la hoja de estilos externa. -->
 </head>
 
 <body>
-<!-- Zona visible de la página -->
-
+<!-- Contenido visible de la página. -->
     <main>
-    <!-- <main> = contenedor del contenido principal.
-         Solo puede haber UN <main> por página. -->
+    <!-- Contenedor principal. Solo uno por página. -->
 
-        <!-- ====================================================
-             REGIÓN 1: ENCABEZADO <header>
-             ==================================================== -->
         <header>
+        <!-- Cabecera con el título principal. -->
             <h1>Smart Room Project</h1>
-            <!-- <h1> = encabezado de nivel 1. Solo UNO por página.
-                 El resto de encabezados (h2, h3...) van subordinados. -->
+            <!-- Título de máximo nivel. Solo un h1 por página. -->
         </header>
 
-        <!-- ====================================================
-             REGIONES 2 + 3: NAVEGACIÓN + INFORMACIÓN
-             Se agrupan en un <div> para ponerlos en la misma fila
-             horizontal desde CSS (display: flex).
-             ==================================================== -->
         <div class="barra-superior">
-
-            <!-- REGIÓN 2: <nav> = enlaces de navegación. -->
+        <!-- Agrupa menú e info para ponerlos en la misma fila. -->
             <nav>
+            <!-- Región de navegación. -->
                 <ul>
-                <!-- <ul> = lista NO numerada (unordered list). -->
-
                     <li><a href="index.html">Inicio</a></li>
-                    <!-- <li> = elemento de lista.
-                         <a href> = enlace. "index.html" es ruta
-                         RELATIVA (está en el mismo directorio). -->
-
+                    <!-- Enlace con ruta relativa. -->
                     <li><a href="config.html">Configuración</a></li>
                     <li><a href="minombre.html">Mi nombre</a></li>
                 </ul>
             </nav>
-
-            <!-- REGIÓN 3: <aside> = contenido al margen del principal.
-                 El id="info-usuario" lo usará JavaScript (Apartado 3)
-                 para escribir: "Hola [nombre]: Bienvenido a Smart Room". -->
             <aside id="info-usuario">
+            <!-- Contenido al margen. El id lo usa JS para mostrar el saludo. -->
                 <p>Información</p>
-                <!-- <p> = párrafo. -->
             </aside>
-
         </div>
 
-        <!-- ====================================================
-             CONTENEDOR DE 2 COLUMNAS
-             El CSS lo convierte en GRID de 2 columnas iguales,
-             y en móvil pasa a 1 sola columna.
-             ==================================================== -->
         <div class="contenido">
-
-            <!-- ================================================
-                 REGIÓN 4: DATOS DE LA HABITACIÓN (columna izquierda)
-                 ================================================ -->
+        <!-- Contenedor de 2 columnas (Grid). -->
             <section id="datos-habitacion">
-
+            <!-- Sección izquierda. -->
                 <h2>Datos de la habitación</h2>
-                <!-- <h2> = encabezado de nivel 2, subordinado al <h1>. -->
-
                 <ul>
                     <li><strong>País:</strong> España</li>
-                    <!-- <strong> = énfasis fuerte (negrita). -->
-
+                    <!-- <strong> = negrita. -->
                     <li><strong>Ciudad:</strong> Alcalá de Henares</li>
-
                     <li><strong>Localización:</strong>
                         <a href="https://www.google.com/maps/search/?api=1&query=Universidad+de+Alcalá"
                            target="_blank"
                            rel="noopener noreferrer">
                            Ver ubicación en Google Maps
                         </a>
-                        <!-- target="_blank" = abre en pestaña NUEVA.
-                             rel="noopener noreferrer" = medida de seguridad
-                             para evitar que la pestaña nueva acceda
-                             a la original. -->
+                        <!-- target="_blank" abre en pestaña nueva. -->
                     </li>
-
                     <li><strong>Capacidad:</strong> 2 personas</li>
                     <li><strong>Tipo:</strong> Sala inteligente</li>
                 </ul>
@@ -125,59 +68,41 @@
                 <img src="images/habitacion.jpg"
                      alt="Fotografía de la Smart Room con sensores instalados en la pared"
                      width="300">
-                <!-- <img>:
-                     - src: ruta de la imagen (relativa a este HTML).
-                     - alt: texto alternativo OBLIGATORIO para accesibilidad.
-                     - width: ancho en píxeles (el CSS lo sobreescribe). -->
+                <!-- src: ruta. alt: texto alternativo. width: ancho inicial. -->
             </section>
 
-            <!-- ================================================
-                 REGIÓN 5: DATOS DE LOS SENSORES (columna derecha)
-                 ================================================ -->
             <section id="datos-sensores">
-
+            <!-- Sección derecha. -->
                 <h2>Datos de los sensores</h2>
-
                 <table>
                     <thead>
-                    <!-- <thead> = cabecera de la tabla. -->
+                    <!-- Cabecera de la tabla. -->
                         <tr>
-                        <!-- <tr> = fila (table row). -->
                             <th>Sensor</th>
                             <th>Valor</th>
                             <th>Unidad</th>
-                            <!-- <th> = celda de CABECERA. -->
+                            <!-- <th> = celda de cabecera. -->
                         </tr>
                     </thead>
-
                     <tbody>
-                    <!-- <tbody> = cuerpo (filas de datos). -->
                         <tr><td>Temperatura</td><td>22</td><td>°C</td></tr>
                         <tr><td>Humedad</td><td>45</td><td>%</td></tr>
                         <tr><td>Nivel de sonido</td><td>38</td><td>dB</td></tr>
                         <tr><td>Nivel de luz</td><td>320</td><td>lux</td></tr>
                         <tr><td>Movimiento</td><td>No</td><td>—</td></tr>
-                        <!-- <td> = celda de DATOS. -->
+                        <!-- <td> = celda de datos. -->
                     </tbody>
                 </table>
             </section>
-
         </div>
-        <!-- Cierra .contenido -->
 
-        <!-- ====================================================
-             REGIÓN 6: PIE <footer>
-             ==================================================== -->
         <footer>
             <p>Universidad de Alcalá</p>
         </footer>
-
     </main>
 
-    <!-- Carga el script que lee el nombre guardado en localStorage
-         y lo muestra en el <aside id="info-usuario"> -->
     <script src="js/nombre.js"></script>
-
+    <!-- Carga el script del nombre. -->
 </body>
 </html>
-
+EOF

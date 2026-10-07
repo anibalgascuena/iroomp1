@@ -1,107 +1,52 @@
-/* ================================================================
-   nombre.js — Gestión del nombre del usuario con localStorage
-   Práctica 1 · Servicios Telemáticos · UAH
-
-   Se carga en DOS páginas:
-     - minombre.html: formulario para guardar el nombre.
-     - index.html:    muestra "Hola [nombre]: Bienvenido a Smart Room".
-
-   El script detecta en qué página está según los elementos del DOM.
-   ================================================================ */
-
-
-/* ================================================================
-   CONSTANTE: clave usada en localStorage
-   Se guarda como pareja clave/valor: "fname" → "Aníbal"
-   ================================================================ */
+/* CLAVE de localStorage. Se guarda "fname" → "Aníbal". */
 var CLAVE_NOMBRE = "fname";
 
-
-/* ================================================================
-   FUNCIÓN: guardarNombre()
-   Se ejecuta al enviar el formulario de minombre.html.
-   Guarda el nombre en localStorage.
-   ================================================================ */
+/* FUNCIÓN: guarda el nombre al enviar el formulario de minombre.html. */
 function guardarNombre(evento) {
-
-    // Evitamos que el formulario recargue la página
-    evento.preventDefault();
+    evento.preventDefault();  // Evita recargar la página.
 
     var inputNombre   = document.getElementById("fname");
     var mensajeNombre = document.getElementById("mensaje-nombre");
 
-    // .trim() elimina espacios sobrantes al principio y al final
-    var nombre = inputNombre.value.trim();
+    var nombre = inputNombre.value.trim();  // .trim() quita espacios sobrantes.
 
-    // Validación: no puede estar vacío
     if (nombre === "") {
         mensajeNombre.textContent = "Introduce un nombre válido.";
         mensajeNombre.className = "mensaje-error";
         return;
     }
 
-    // Comprobamos que el navegador soporta localStorage.
-    // En navegadores antiguos, "Storage" no existe.
-    if (typeof(Storage) !== "undefined") {
-        // localStorage.setItem(clave, valor) guarda el par.
-        // Persiste aunque se cierre el navegador (no expira).
-        localStorage.setItem(CLAVE_NOMBRE, nombre);
-
-        mensajeNombre.textContent =
-            "✓ Nombre guardado: " + nombre + ". Ya puedes volver al inicio.";
+    if (typeof(Storage) !== "undefined") {  // ¿Soporta localStorage?
+        localStorage.setItem(CLAVE_NOMBRE, nombre);  // Guarda el par clave/valor.
+        mensajeNombre.textContent = "✓ Nombre guardado: " + nombre + ". Ya puedes volver al inicio.";
         mensajeNombre.className = "mensaje-ok";
     } else {
-        mensajeNombre.textContent =
-            "Tu navegador no soporta almacenamiento local (localStorage).";
+        mensajeNombre.textContent = "Tu navegador no soporta almacenamiento local.";
         mensajeNombre.className = "mensaje-error";
     }
 }
 
-
-/* ================================================================
-   FUNCIÓN: mostrarNombreEnAside()
-   Se ejecuta al cargar index.html.
-   Lee el nombre de localStorage y lo muestra en #info-usuario.
-   ================================================================ */
+/* FUNCIÓN: lee el nombre de localStorage y lo muestra en el aside. */
 function mostrarNombreEnAside() {
-
     var aside = document.getElementById("info-usuario");
+    if (!aside) return;                          // No estamos en index.html.
+    if (typeof(Storage) === "undefined") return; // Sin localStorage.
 
-    // Si no existe el aside, estamos en otra página → no hacemos nada
-    if (!aside) return;
-
-    // Si el navegador no soporta localStorage, no hacemos nada
-    if (typeof(Storage) === "undefined") return;
-
-    // localStorage.getItem(clave) devuelve el valor o null si no existe
-    var nombre = localStorage.getItem(CLAVE_NOMBRE);
-
+    var nombre = localStorage.getItem(CLAVE_NOMBRE);  // Lee el valor o null.
     if (nombre) {
-        // innerHTML permite meter etiquetas HTML dentro del aside
-        aside.innerHTML =
-            '<p>Hola <strong>' + nombre + '</strong>: Bienvenido a Smart Room</p>';
+        aside.innerHTML = '<p>Hola <strong>' + nombre + '</strong>: Bienvenido a Smart Room</p>';
     }
-    // Si no hay nombre guardado, dejamos el "Información" por defecto
+    // Si no hay nombre, se queda el "Información" por defecto.
 }
 
-
-/* ================================================================
-   ARRANQUE: cuando el DOM esté listo, ejecutamos la lógica
-   que corresponda a la página actual.
-   ================================================================ */
-
-// "DOMContentLoaded" se dispara cuando el HTML está cargado
-// (antes de esperar imágenes o CSS).
+/* ARRANQUE: al cargar el DOM, ejecuta la lógica correspondiente. */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ------------------------------------------------------------
-    // Caso minombre.html: existe el formulario
-    // ------------------------------------------------------------
+    // Caso minombre.html
     var formNombre = document.getElementById("form-nombre");
     if (formNombre) {
         formNombre.addEventListener("submit", guardarNombre);
-
-        // Rellenamos el campo con el nombre ya guardado (si lo hay)
+        // Rellena el campo con el nombre ya guardado (si existe).
         if (typeof(Storage) !== "undefined") {
             var guardado = localStorage.getItem(CLAVE_NOMBRE);
             if (guardado) {
@@ -110,9 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // ------------------------------------------------------------
-    // Caso index.html: mostrar el saludo en el aside
-    // ------------------------------------------------------------
+    // Caso index.html
     mostrarNombreEnAside();
 });
-

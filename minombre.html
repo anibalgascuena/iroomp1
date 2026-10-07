@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!-- ============================================================
-     minombre.html — Página para guardar el nombre del usuario
-     Práctica 1 · Servicios Telemáticos · UAH
-
-     El nombre se guarda en localStorage con la clave "fname".
-     Después, en index.html, se lee y se muestra en el <aside>.
-     ============================================================ -->
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,17 +6,12 @@
     <title>Mi nombre — Smart Room</title>
     <link rel="stylesheet" href="css/iroom.css">
 </head>
-
 <body>
-
     <main>
-
-        <!-- ENCABEZADO -->
         <header>
             <h1>Mi nombre</h1>
         </header>
 
-        <!-- NAVEGACIÓN + INFO -->
         <div class="barra-superior">
             <nav>
                 <ul>
@@ -33,49 +20,42 @@
                     <li><a href="minombre.html">Mi nombre</a></li>
                 </ul>
             </nav>
-
             <aside id="info-usuario">
                 <p>Información</p>
             </aside>
         </div>
 
-        <!-- FORMULARIO para introducir el nombre.
-             Tiene un solo campo + botón de guardar. -->
         <section id="seccion-nombre">
+        <!-- Sección con el formulario del nombre. -->
             <h2>Introduce tu nombre</h2>
 
             <form id="form-nombre">
-
+            <!-- Formulario. El id lo usa JS para escuchar el envío. -->
                 <label for="fname">Nombre:</label>
-                <input type="text"
-                       id="fname"
-                       name="fname"
+                <input type="text" id="fname" name="fname"
                        placeholder="Ej: Aníbal"
                        required
                        autofocus>
+                <!-- autofocus: al cargar la página, el cursor se pone aquí. -->
 
                 <div class="form-acciones">
                     <button type="submit">Guardar nombre</button>
                     <p id="mensaje-nombre" role="alert"></p>
+                    <!-- Aquí JS escribe el mensaje de confirmación o error. -->
                 </div>
-
             </form>
         </section>
 
-        <!-- Enlace para volver al inicio -->
         <p class="volver">
             <a href="index.html">← Volver a la página principal</a>
         </p>
 
-        <!-- PIE -->
         <footer>
             <p>Universidad de Alcalá</p>
         </footer>
-
     </main>
 
-    <!-- Cargamos el script que gestiona el nombre -->
     <script src="js/nombre.js"></script>
-
+    <!-- Script que gestiona el guardado del nombre. -->
 </body>
 </html>
