@@ -472,3 +472,29 @@ button[type="submit"]:focus {
     }
 }
 
+
+
+/* ================================================================
+   15. SECCIÓN "MI NOMBRE"
+   ================================================================ */
+#seccion-nombre {
+    max-width: 500px;
+    margin: 0 auto 1.5rem auto;
+}
+
+#seccion-nombre input {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fafcff;
+}
+
+#seccion-nombre input:focus {
+    outline: 2px solid #1a3d7c;
+    outline-offset: 1px;
+    border-color: #1a3d7c;
+}
+
