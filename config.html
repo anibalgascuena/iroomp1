@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     config.html — Página de configuración de la Smart Room
+     Práctica 1 · Servicios Telemáticos · UAH
+
+     Estructura semántica coherente con index.html.
+     Contiene UN ÚNICO formulario dividido en 2 columnas:
+       - Columna izquierda: datos de la habitación
+       - Columna derecha:   sensores y umbrales de alerta
+     ============================================================ -->
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración — Smart Room</title>
+    <link rel="stylesheet" href="css/iroom.css">
+</head>
+
+<body>
+
+    <main>
+
+        <!-- ====================================================
+             ENCABEZADO — igual que en index.html
+             ==================================================== -->
+        <header>
+            <h1>Configuración de la Smart Room</h1>
+        </header>
+
+        <!-- ====================================================
+             BARRA DE NAVEGACIÓN + INFORMACIÓN
+             ==================================================== -->
+        <div class="barra-superior">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="config.html">Configuración</a></li>
+                    <li><a href="minombre.html">Mi nombre</a></li>
+                </ul>
+            </nav>
+
+            <aside id="info-usuario">
+                <p>Información</p>
+            </aside>
+        </div>
+
+        <!-- ====================================================
+             FORMULARIO DE CONFIGURACIÓN
+             Un único <form> con dos columnas internas.
+             El atributo id permite que JavaScript acceda a él.
+             ==================================================== -->
+        <form id="form-config" action="#" novalidate>
+
+            <!-- Contenedor Grid de 2 columnas -->
+            <div class="form-columnas">
+
+                <!-- ============================================
+                     COLUMNA IZQUIERDA: DATOS DE LA HABITACIÓN
+                     ============================================ -->
+                <section id="config-habitacion">
+                    <h2>Datos de la habitación</h2>
+
+                    <!-- CAMPO: País (con datalist de sugerencias)
+                         El input "list" apunta al id del datalist -->
+                    <label for="pais">País:</label>
+                    <input type="text"
+                           id="pais"
+                           name="pais"
+                           list="lista-paises"
+                           placeholder="Escribe o selecciona un país"
+                           required>
+
+                    <datalist id="lista-paises">
+                        <!-- Lista de sugerencias de países.
+                             El usuario puede escribir libremente
+                             o elegir uno de la lista. -->
+                        <option value="España">
+                        <option value="Francia">
+                        <option value="Alemania">
+                        <option value="Italia">
+                        <option value="Portugal">
+                        <option value="Reino Unido">
+                        <option value="Países Bajos">
+                        <option value="Bélgica">
+                        <option value="Suiza">
+                        <option value="Estados Unidos">
+                        <option value="Canadá">
+                        <option value="México">
+                        <option value="Argentina">
+                        <option value="Brasil">
+                        <option value="Japón">
+                        <option value="China">
+                    </datalist>
+
+                    <!-- CAMPO: Ciudad -->
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text"
+                           id="ciudad"
+                           name="ciudad"
+                           placeholder="Ej: Alcalá de Henares"
+                           required>
+
+                    <!-- CAMPO: URL del mapa de Google
+                         El type="url" hace que el navegador valide
+                         que el texto tenga formato de URL -->
+                    <label for="mapa">Enlace al mapa:</label>
+                    <input type="url"
+                           id="mapa"
+                           name="mapa"
+                           placeholder="https://maps.google.com/..."
+                           required>
+
+                    <!-- CAMPO: Fotografía (subida de archivo)
+                         El navegador solo permite seleccionar
+                         imágenes con accept -->
+                    <label for="foto">Fotografía de la habitación:</label>
+                    <input type="file"
+                           id="foto"
+                           name="foto"
+                           accept="image/*">
+
+                    <!-- CAMPO: Contraseña
+                         type="password" oculta los caracteres -->
+                    <label for="password">Contraseña:</label>
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           placeholder="Introduce la contraseña"
+                           required>
+                </section>
+
+                <!-- ============================================
+                     COLUMNA DERECHA: SENSORES Y UMBRALES
+                     ============================================ -->
+                <section id="config-sensores">
+                    <h2>Seleccione los sensores</h2>
+
+                    <!-- CHECKBOXES DE SENSORES
+                         Cada uno tiene su label asociado con for/id -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sensor-temp" name="sensores" value="temperatura" checked>
+                        <label for="sensor-temp">Temperatura</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sensor-hum" name="sensores" value="humedad" checked>
+                        <label for="sensor-hum">Humedad</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sensor-sonido" name="sensores" value="sonido">
+                        <label for="sensor-sonido">Nivel de sonido</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sensor-luz" name="sensores" value="luz">
+                        <label for="sensor-luz">Nivel de luz</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sensor-mov" name="sensores" value="movimiento">
+                        <label for="sensor-mov">Movimiento</label>
+                    </div>
+
+                    <!-- SUBTÍTULO DE UMBRALES -->
+                    <h3>Configure alertas</h3>
+
+                    <!-- UMBRAL: Temperatura máxima
+                         - type="number" con min y max limita el rango
+                         - step="0.5" permite decimales de medio grado
+                         - El id permite que JavaScript lo lea -->
+                    <label for="temp-max">Temperatura máxima (°C):</label>
+                    <input type="number"
+                           id="temp-max"
+                           name="temp-max"
+                           min="-20"
+                           max="45"
+                           step="0.5"
+                           value="25">
+
+                    <!-- UMBRAL: Temperatura mínima -->
+                    <label for="temp-min">Temperatura mínima (°C):</label>
+                    <input type="number"
+                           id="temp-min"
+                           name="temp-min"
+                           min="-20"
+                           max="45"
+                           step="0.5"
+                           value="15">
+
+                    <!-- OUTPUT: Diferencia entre máxima y mínima
+                         Se actualiza automáticamente con JavaScript -->
+                    <label for="diferencia">Diferencia (máx − mín):</label>
+                    <output id="diferencia" name="diferencia">10</output>
+
+                    <!-- MENSAJE DE ERROR dinámico (se rellena por JS) -->
+                    <p id="mensaje-temp" class="mensaje-error" role="alert"></p>
+                </section>
+
+            </div>
+
+            <!-- ============================================
+                 BOTÓN DE ENVÍO Y MENSAJE DE RESULTADO
+                 ============================================ -->
+            <div class="form-acciones">
+                <button type="submit">Enviar datos</button>
+                <p id="mensaje-envio" role="alert"></p>
+            </div>
+
+        </form>
+
+        <!-- Enlace para volver al inicio -->
+        <p class="volver">
+            <a href="index.html">← Volver a la página principal</a>
+        </p>
+
+        <!-- ====================================================
+             PIE — igual que en index.html
+             ==================================================== -->
+        <footer>
+            <p>Universidad de Alcalá</p>
+        </footer>
+
+    </main>
+
+    <!-- Enlace al script que procesa el formulario -->
+    <script src="js/datos.js"></script>
+
+</body>
+</html>

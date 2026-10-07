@@ -306,3 +306,169 @@ footer {
     }
 }
 
+
+
+/* ================================================================
+   13. FORMULARIO DE CONFIGURACIÓN
+   Estilos específicos de config.html.
+   ================================================================ */
+
+/* Contenedor Grid de 2 columnas para el formulario.
+   En móvil pasa a 1 columna. */
+.form-columnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Estilo de las etiquetas <label> */
+label {
+    display: block;
+    margin-top: 0.8rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    color: #1a3d7c;
+}
+
+/* Estilo común a todos los campos de texto/número/url/archivo
+   y al datalist asociado */
+input[type="text"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    /* "inherit" hereda la fuente del <body> */
+    background-color: #fafcff;
+}
+
+/* Al enfocar un campo con Tab, aparece borde azul y sombra.
+   Mejora la accesibilidad del formulario */
+input:focus {
+    outline: 2px solid #1a3d7c;
+    outline-offset: 1px;
+    border-color: #1a3d7c;
+}
+
+/* Grupo de checkbox + etiqueta en la misma línea */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.3rem 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    /* El checkbox no debe ser ancho completo */
+    width: auto;
+    margin: 0;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Subtítulo interno de la sección de sensores */
+#config-sensores h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a3d7c;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3rem;
+}
+
+/* El <output> se muestra como un bloque con aspecto de campo */
+output {
+    display: block;
+    margin-top: 0.3rem;
+    padding: 0.5rem 0.7rem;
+    background-color: #e8eef7;
+    border: 1px solid #1a3d7c;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #1a3d7c;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Mensajes de error y de éxito */
+.mensaje-error {
+    color: #c00;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    margin-top: 0.5rem;
+}
+
+.mensaje-ok {
+    color: #060;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background-color: #1a3d7c;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0f2649;
+}
+
+button[type="submit"]:focus {
+    outline: 3px solid #ff9900;
+    outline-offset: 2px;
+}
+
+/* Contenedor del botón y mensaje de envío */
+.form-acciones {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+/* Enlace "Volver a la página principal" */
+.volver {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.volver a {
+    color: #1a3d7c;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.volver a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================================================
+   14. RESPONSIVE del formulario
+   En móvil, las 2 columnas pasan a 1.
+   ================================================================ */
+@media (max-width: 700px) {
+    .form-columnas {
+        grid-template-columns: 1fr;
+    }
+}
+
