@@ -1,116 +1,161 @@
 /* ================================================================
-   HOJA DE ESTILOS EXTERNA — iroom.css
-   Ref. S3GG p.3  — sintaxis: selector { propiedad: valor; }
-   Ref. S3GG p.7  — hoja externa enlazada con <link>
+   iroom.css — Hoja de estilos externa de Smart Room
+   Práctica 1 · Servicios Telemáticos · UAH
    ================================================================ */
 
 
 /* ================================================================
-   1. RESET Y BASE
-   Ref. S3GG p.9-10 — box model (margin/border/padding/content)
+   1. RESET UNIVERSAL
+   El selector * afecta a TODOS los elementos.
    ================================================================ */
 * {
-    box-sizing: border-box;   /* El width incluye padding y border */
+    box-sizing: border-box;
+    /* box-sizing: border-box → el width incluye padding + border.
+       Por defecto (content-box), width:100px + padding:10px + border:1px
+       da 122px reales. Con border-box, da 100px. */
+
     margin: 0;
     padding: 0;
-}
-
-body {
-    /* Ref. S3GG p.15 — propiedades de fuentes */
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #222;
-    background-color: #eef2f7;
-    padding: 1rem;
+    /* Elimina márgenes y rellenos por defecto del navegador. */
 }
 
 
 /* ================================================================
-   2. CONTENEDOR PRINCIPAL <main>
+   2. ESTILOS BASE DEL <body>
+   ================================================================ */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* Lista de fuentes separadas por comas: si no hay Arial,
+       prueba Helvetica; si no, cualquier sans-serif. */
+
+    font-size: 16px;
+    line-height: 1.5;
+    /* Altura de línea = 1.5 × tamaño de fuente. Mejora legibilidad. */
+
+    color: #222;
+    /* Color del texto en hexadecimal (#RRGGBB). */
+
+    background-color: #eef2f7;
+    padding: 1rem;
+    /* 1rem = 1 × tamaño de fuente raíz (16px por defecto). */
+}
+
+
+/* ================================================================
+   3. CONTENEDOR PRINCIPAL <main>
    ================================================================ */
 main {
     max-width: 1100px;
+    /* Ancho máximo: en pantallas grandes no se estira más. */
+
     margin: 0 auto;
+    /* Truco clásico para CENTRAR un bloque horizontalmente:
+       auto reparte el espacio sobrante a izquierda y derecha. */
+
     background-color: #ffffff;
     border: 1px solid #ccc;
-    border-radius: 8px;            /* Ref. S3GG p.11 — border-radius */
+    border-radius: 8px;
+    /* Esquinas redondeadas. */
+
     padding: 1rem;
-    /* Ref. S3GG p.11 — box-shadow */
+
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    /* Sombra: 0 desplaz. horizontal, 2px vertical, 6px desenfoque,
+       color negro con 8% de opacidad. */
 }
 
 
 /* ================================================================
-   3. ENCABEZADO <header>
-   Ref. S3GG p.14-15 — color, font-size, font-weight, text-align
+   4. ENCABEZADO <header>
    ================================================================ */
 header {
     text-align: center;
     border-bottom: 2px solid #1a3d7c;
     padding: 1rem 0;
+    /* Arriba/abajo 1rem, izquierda/derecha 0. */
     margin-bottom: 1rem;
 }
 
 header h1 {
-    /* Jerarquía visual: título más grande, más grueso, color distintivo */
+    /* SELECTOR DESCENDIENTE: todos los <h1> dentro de <header>. */
     font-size: 2rem;
+    /* El doble del tamaño base. Jerarquía visual. */
+
     font-weight: bold;
     color: #1a3d7c;
+    /* Azul oscuro para dar jerarquía visual. */
 }
 
 
 /* ================================================================
-   4. BARRA SUPERIOR: nav + aside en la misma fila
-   Ref. S3GG p.6 — selector descendiente (nav ul, nav a)
+   5. BARRA SUPERIOR (nav + aside en la misma fila)
    ================================================================ */
 .barra-superior {
+    /* SELECTOR DE CLASE: aplica a class="barra-superior". */
     display: flex;
+    /* Activa Flexbox: coloca los hijos en fila. */
+
     justify-content: space-between;
+    /* Reparte el espacio sobrante entre los hijos:
+       uno a la izquierda, otro a la derecha. */
+
     align-items: center;
+    /* Alinea verticalmente al centro. */
+
     flex-wrap: wrap;
+    /* Si no caben, saltan a la línea siguiente. */
+
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
     background-color: #f7f9fc;
     border: 1px dashed #999;
+    /* Borde PUNTEADO (dashed) gris. */
     border-radius: 6px;
 }
 
 nav ul {
-    /* Ref. S3GG p.18 — list-style */
     list-style: none;
+    /* Quita los puntos de la lista. */
     display: flex;
     gap: 0.8rem;
 }
 
 nav a {
     text-decoration: none;
+    /* Quita el subrayado por defecto de los enlaces. */
     color: #1a3d7c;
     font-weight: 600;
     padding: 0.35rem 0.7rem;
     border: 1px solid #1a3d7c;
     border-radius: 4px;
-    /* Ref. S3GG p.32 — transition para suavizar el cambio */
+
     transition: background-color 0.2s ease, color 0.2s ease;
+    /* Animación suave de 0.2s al cambiar color. */
 }
 
 nav a:hover {
+    /* PSEUDOCLASE :hover → se aplica al pasar el ratón. */
     background-color: #1a3d7c;
     color: #ffffff;
 }
 
-/* Ref. S3GG p.22 — outline para foco visible (accesibilidad teclado) */
 nav a:focus {
+    /* PSEUDOCLASE :focus → se aplica al enfocar con Tab.
+       Mejora la accesibilidad: foco visible para navegación por teclado. */
     outline: 3px solid #ff9900;
+    /* outline NO ocupa espacio (a diferencia de border). */
     outline-offset: 2px;
+    /* Separación entre el borde naranja y el elemento. */
 }
 
 
 /* ================================================================
-   5. REGIÓN DE INFORMACIÓN DINÁMICA <aside>
+   6. INFO DE USUARIO <aside>
    ================================================================ */
 #info-usuario {
+    /* SELECTOR DE ID: aplica al elemento con id="info-usuario".
+       Solo debe haber UNO con ese id. */
     font-style: italic;
     color: #555;
     font-size: 0.95rem;
@@ -118,19 +163,23 @@ nav a:focus {
 
 
 /* ================================================================
-   6. LAYOUT DE CONTENIDO: 2 COLUMNAS
-   Ref. S3GG p.19-20 — columnas (aquí usamos CSS Grid, más moderno)
+   7. GRID DE 2 COLUMNAS (contenido principal)
    ================================================================ */
 .contenido {
     display: grid;
+    /* Grid Layout: 2D, más moderno que Flexbox para columnas. */
+
     grid-template-columns: 1fr 1fr;
+    /* Dos columnas de 1 fracción cada una (50%-50%).
+       "1fr" = fracción del espacio disponible. */
+
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
 
 /* ================================================================
-   7. SECCIONES <section>
+   8. SECCIONES <section>
    ================================================================ */
 section {
     border: 1px dashed #999;
@@ -140,7 +189,6 @@ section {
 }
 
 section h2 {
-    /* Jerarquía: h2 más pequeño que h1 pero con color y borde inferior */
     font-size: 1.3rem;
     font-weight: bold;
     color: #1a3d7c;
@@ -151,8 +199,7 @@ section h2 {
 
 
 /* ================================================================
-   8. LISTA DE DATOS DE LA HABITACIÓN
-   Ref. S3GG p.18 — list-style: none
+   9. LISTA DE DATOS DE LA HABITACIÓN
    ================================================================ */
 #datos-habitacion ul {
     list-style: none;
@@ -174,26 +221,32 @@ section h2 {
 
 #datos-habitacion img {
     display: block;
+    /* Hace que la imagen sea un bloque (ocupa toda la línea). */
+
     max-width: 100%;
+    /* Nunca más ancha que su contenedor → RESPONSIVE. */
+
     height: auto;
+    /* Altura automática manteniendo proporción. */
+
     border-radius: 6px;
     margin-top: 0.5rem;
-    /* Ref. S3GG p.11 — box-shadow */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 
 /* ================================================================
-   9. TABLA DE SENSORES
-   Ref. S3GG p.17 — propiedades de tablas: border-collapse
+   10. TABLA DE SENSORES
    ================================================================ */
 #datos-sensores table {
     width: 100%;
-    border-collapse: collapse;   /* Ref. S3GG p.17 */
+    border-collapse: collapse;
+    /* Une los bordes adyacentes de celdas (sin doble línea). */
 }
 
 #datos-sensores th,
 #datos-sensores td {
+    /* SELECTOR MÚLTIPLE: aplica a th Y a td. */
     border: 1px solid #ccc;
     padding: 0.5rem 0.7rem;
     text-align: left;
@@ -206,12 +259,14 @@ section h2 {
 }
 
 #datos-sensores tbody tr:nth-child(even) {
+    /* PSEUDOCLASE ESTRUCTURAL :nth-child(even) → filas PARES.
+       Crea efecto cebra (filas alternas con color). */
     background-color: #fafcff;
 }
 
 
 /* ================================================================
-   10. PIE <footer>
+   11. PIE <footer>
    ================================================================ */
 footer {
     text-align: center;
@@ -223,22 +278,26 @@ footer {
 
 
 /* ================================================================
-   11. RESPONSIVE — MEDIA QUERIES
-   Ref. S3GG p.16 — @media para distintos tamaños de pantalla
-   Objetivo: en pantallas pequeñas, las 2 columnas pasan a 1
+   12. RESPONSIVE — MEDIA QUERIES
+   OBJETIVO: en pantallas pequeñas, las 2 columnas se convierten en 1.
    ================================================================ */
 @media (max-width: 700px) {
+    /* Este bloque SOLO se aplica cuando el ancho de pantalla
+       es menor o igual a 700px. */
 
     .contenido {
-        grid-template-columns: 1fr;   /* 1 columna */
+        grid-template-columns: 1fr;
+        /* De 2 columnas → 1 columna. */
     }
 
     header h1 {
         font-size: 1.5rem;
+        /* Título más pequeño en móvil. */
     }
 
     nav ul {
         flex-direction: column;
+        /* El menú pasa a vertical. */
         align-items: flex-start;
     }
 
