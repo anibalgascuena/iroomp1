@@ -1,14 +1,12 @@
-/* CLAVE de localStorage. Se guarda "fname" → "Aníbal". */
+/* CLAVE de localStorage */
 var CLAVE_NOMBRE = "fname";
 
-/* FUNCIÓN: guarda el nombre al enviar el formulario de minombre.html. */
+/* FUNCIÓN: guardar nombre */
 function guardarNombre(evento) {
-    evento.preventDefault();  // Evita recargar la página.
-
-    var inputNombre   = document.getElementById("fname");
+    evento.preventDefault();
+    var inputNombre = document.getElementById("fname");
     var mensajeNombre = document.getElementById("mensaje-nombre");
-
-    var nombre = inputNombre.value.trim();  // .trim() quita espacios sobrantes.
+    var nombre = inputNombre.value.trim();
 
     if (nombre === "") {
         mensajeNombre.textContent = "Introduce un nombre válido.";
@@ -16,9 +14,9 @@ function guardarNombre(evento) {
         return;
     }
 
-    if (typeof(Storage) !== "undefined") {  // ¿Soporta localStorage?
-        localStorage.setItem(CLAVE_NOMBRE, nombre);  // Guarda el par clave/valor.
-        mensajeNombre.textContent = "✓ Nombre guardado: " + nombre + ". Ya puedes volver al inicio.";
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem(CLAVE_NOMBRE, nombre);
+        mensajeNombre.textContent = "✓ Nombre guardado: " + nombre;
         mensajeNombre.className = "mensaje-ok";
     } else {
         mensajeNombre.textContent = "Tu navegador no soporta almacenamiento local.";
@@ -26,35 +24,97 @@ function guardarNombre(evento) {
     }
 }
 
-/* FUNCIÓN: lee el nombre de localStorage y lo muestra en el aside. */
+/* FUNCIÓN: mostrar nombre en aside */
 function mostrarNombreEnAside() {
     var aside = document.getElementById("info-usuario");
-    if (!aside) return;                          // No estamos en index.html.
-    if (typeof(Storage) === "undefined") return; // Sin localStorage.
-
-    var nombre = localStorage.getItem(CLAVE_NOMBRE);  // Lee el valor o null.
+    if (!aside) return;
+    if (typeof(Storage) === "undefined") return;
+    var nombre = localStorage.getItem(CLAVE_NOMBRE);
     if (nombre) {
         aside.innerHTML = '<p>Hola <strong>' + nombre + '</strong>: Bienvenido a Smart Room</p>';
     }
-    // Si no hay nombre, se queda el "Información" por defecto.
 }
 
-/* ARRANQUE: al cargar el DOM, ejecuta la lógica correspondiente. */
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   VALIDACIÓN DE EMAIL (APARTADO 3)
+   ========================================================= */
 
-    // Caso minombre.html
+/* FUNCIÓN 1: Sin expresiones regulares (usando operaciones de cadena) */
+function validarEmailSinRegex(email) {
+    email = email.trim();
+    if (email === "") return false;
+    
+    // No puede tener espacios
+    if (email.indexOf(" ") !== -1) return false;
+
+    // Debe tener exactamente un @
+    var partesArroba = email.split("@");
+    if (partesArroba.length !== 2) return false;
+
+    var usuario = partesArroba[0];
+    var dominio = partesArroba[1];
+
+    // La parte del usuario no puede estar vacía
+    if (usuario.length === 0) return false;
+
+    // El dominio no puede estar vacío
+    if (dominio.length === 0) return false;
+
+    // El dominio debe contener al menos un punto
+    if (dominio.indexOf(".") === -1) return false;
+
+    // El punto no puede ser el primer o último carácter del dominio
+    if (dominio.startsWith(".") || dominio.endsWith(".")) return false;
+
+    return true;
+}
+
+/* FUNCIÓN 2: Con expresión regular */
+function validarEmailConRegex(email) {
+    email = email.trim();
+    // ^[^\s@]+ -> Inicio, uno o más caracteres que no sean espacio ni @
+    // @ -> Una @
+    // [^\s@]+ -> Uno o más caracteres que no sean espacio ni @ (dominio)
+    // \. -> Un punto literal
+    // [^\s@]+$ -> Uno o más caracteres que no sean espacio ni @ (TLD)
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+/* EVENTOS DE LOS BOTONES DE VALIDACIÓN */
+document.addEventListener("DOMContentLoaded", function () {
+    // Lógica del nombre
     var formNombre = document.getElementById("form-nombre");
     if (formNombre) {
         formNombre.addEventListener("submit", guardarNombre);
-        // Rellena el campo con el nombre ya guardado (si existe).
-        if (typeof(Storage) !== "undefined") {
-            var guardado = localStorage.getItem(CLAVE_NOMBRE);
-            if (guardado) {
-                document.getElementById("fname").value = guardado;
-            }
-        }
     }
-
-    // Caso index.html
     mostrarNombreEnAside();
+
+    // Lógica del email
+    var btnSinRegex = document.getElementById("btn-sin-regex");
+    var btnConRegex = document.getElementById("btn-con-regex");
+    var inputEmail = document.getElementById("email");
+    var mensajeEmail = document.getElementById("mensaje-email");
+
+    if (btnSinRegex && btnConRegex) {
+        btnSinRegex.addEventListener("click", function() {
+            if (validarEmailSinRegex(inputEmail.value)) {
+                mensajeEmail.textContent = "✓ Válido (Sin Regex)";
+                mensajeEmail.className = "mensaje-ok";
+            } else {
+                mensajeEmail.textContent = "✗ Inválido (Sin Regex)";
+                mensajeEmail.className = "mensaje-error";
+            }
+        });
+
+        btnConRegex.addEventListener("click", function() {
+            if (validarEmailConRegex(inputEmail.value)) {
+                mensajeEmail.textContent = "✓ Válido (Con Regex)";
+                mensajeEmail.className = "mensaje-ok";
+            } else {
+                mensajeEmail.textContent = "✗ Inválido (Con Regex)";
+                mensajeEmail.className = "mensaje-error";
+            }
+        });
+    }
 });

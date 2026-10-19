@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora — Smart Room</title>
+    <link rel="stylesheet" href="css/iroom.css">
+    <style>
+        /* Estilos rápidos para la calculadora */
+        .calculadora {
+            max-width: 350px;
+            margin: 2rem auto;
+            background-color: #f7f9fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .display {
+            background-color: #222;
+            color: #fff;
+            padding: 1rem;
+            font-size: 2rem;
+            text-align: right;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            min-height: 70px;
+        }
+        .unidad {
+            font-size: 1rem;
+            color: #ff9900;
+            display: block;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        .botones button {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .botones button:hover {
+            background-color: #e8eef7;
+        }
+        .botones .op {
+            background-color: #1a3d7c;
+            color: white;
+        }
+        .botones .op:hover {
+            background-color: #0f2649;
+        }
+        .conversiones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .conversiones button {
+            flex: 1;
+            margin: 0 0.2rem;
+            padding: 0.5rem;
+            background-color: #e8eef7;
+            border: 1px solid #1a3d7c;
+            color: #1a3d7c;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .conversiones button:hover {
+            background-color: #1a3d7c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Calculadora de Temperaturas</h1>
+        </header>
+
+        <div class="barra-superior">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="config.html">Configuración</a></li>
+                    <li><a href="minombre.html">Mi nombre</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
+                </ul>
+            </nav>
+            <aside id="info-usuario">
+                <p>Información</p>
+            </aside>
+        </div>
+
+        <section class="calculadora">
+            <div class="display">
+                <span id="resultado">0</span>
+                <span class="unidad" id="unidad-actual">Unidad: Celsius (°C)</span>
+            </div>
+
+            <div class="botones">
+                <button onclick="agregarNumero('7')">7</button>
+                <button onclick="agregarNumero('8')">8</button>
+                <button onclick="agregarNumero('9')">9</button>
+                <button class="op" onclick="elegirOperacion('/')">÷</button>
+
+                <button onclick="agregarNumero('4')">4</button>
+                <button onclick="agregarNumero('5')">5</button>
+                <button onclick="agregarNumero('6')">6</button>
+                <button class="op" onclick="elegirOperacion('*')">×</button>
+
+                <button onclick="agregarNumero('1')">1</button>
+                <button onclick="agregarNumero('2')">2</button>
+                <button onclick="agregarNumero('3')">3</button>
+                <button class="op" onclick="elegirOperacion('-')">-</button>
+
+                <button onclick="agregarNumero('0')">0</button>
+                <button onclick="agregarNumero('.')">.</button>
+                <button class="op" onclick="calcular()">=</button>
+                <button class="op" onclick="elegirOperacion('+')">+</button>
+            </div>
+
+            <div class="conversiones">
+                <button onclick="convertir('C')">A °C</button>
+                <button onclick="convertir('K')">A Kelvin</button>
+                <button onclick="convertir('F')">A °F</button>
+            </div>
+            
+            <div class="form-acciones" style="margin-top: 1rem;">
+                <button onclick="limpiar()" style="background-color: #c00; color: white; width: 100%;">Limpiar (C)</button>
+            </div>
+        </section>
+
+        <p class="volver">
+            <a href="index.html">← Volver a la página principal</a>
+        </p>
+
+        <footer>
+            <p>Universidad de Alcalá</p>
+        </footer>
+    </main>
+    <script src="js/calculadora.js"></script>
+</body>
+</html>

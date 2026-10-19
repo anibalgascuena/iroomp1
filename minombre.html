@@ -26,24 +26,29 @@
         </div>
 
         <section id="seccion-nombre">
-        <!-- Sección con el formulario del nombre. -->
             <h2>Introduce tu nombre</h2>
-
             <form id="form-nombre">
-            <!-- Formulario. El id lo usa JS para escuchar el envío. -->
                 <label for="fname">Nombre:</label>
-                <input type="text" id="fname" name="fname"
-                       placeholder="Ej: Aníbal"
-                       required
-                       autofocus>
-                <!-- autofocus: al cargar la página, el cursor se pone aquí. -->
-
+                <input type="text" id="fname" name="fname" placeholder="Ej: Aníbal" required autofocus>
                 <div class="form-acciones">
                     <button type="submit">Guardar nombre</button>
                     <p id="mensaje-nombre" role="alert"></p>
-                    <!-- Aquí JS escribe el mensaje de confirmación o error. -->
                 </div>
             </form>
+        </section>
+
+        <!-- NUEVA SECCIÓN: VALIDACIÓN DE EMAIL -->
+        <section id="seccion-email" style="margin-top: 2rem;">
+            <h2>Validación de correo electrónico</h2>
+            
+            <label for="email">Correo:</label>
+            <input type="text" id="email" placeholder="ejemplo@dominio.com">
+            
+            <div class="form-acciones" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+                <button type="button" id="btn-sin-regex">Validar (Sin Regex)</button>
+                <button type="button" id="btn-con-regex">Validar (Con Regex)</button>
+            </div>
+            <p id="mensaje-email" class="mensaje-error" style="text-align: center; margin-top: 1rem;"></p>
         </section>
 
         <p class="volver">
@@ -54,8 +59,6 @@
             <p>Universidad de Alcalá</p>
         </footer>
     </main>
-
     <script src="js/nombre.js"></script>
-    <!-- Script que gestiona el guardado del nombre. -->
 </body>
 </html>
