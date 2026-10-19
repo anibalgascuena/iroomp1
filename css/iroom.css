@@ -295,3 +295,52 @@ button[type="submit"]:focus { outline: 3px solid #ff9900; outline-offset: 2px; }
     outline-offset: 1px;
     border-color: #1a3d7c;
 }
+
+
+/* MODAL */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* ESTA ES LA REGLA QUE FALTABA: Cuando tiene la clase "activo", se muestra */
+.modal.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-contenido p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #1a3d7c;
+}
+
+.modal-contenido button {
+    padding: 0.5rem 1.5rem;
+    background-color: #1a3d7c;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modal-contenido button:hover {
+    background-color: #0f2649;
+}

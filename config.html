@@ -25,29 +25,14 @@
             </aside>
         </div>
 
-        <form id="form-config" action="#" novalidate>
-        <!-- Formulario.
-             id: para que JS lo encuentre.
-             action="#": no envía a ningún sitio (lo gestiona JS).
-             novalidate: desactiva la validación automática del navegador. -->
-
+        <form id="form-config" novalidate>
             <div class="form-columnas">
-            <!-- Contenedor que el CSS convierte en Grid de 2 columnas. -->
-
                 <section id="config-habitacion">
-                <!-- Columna izquierda: datos de la habitación. -->
                     <h2>Datos de la habitación</h2>
 
                     <label for="pais">País:</label>
-                    <!-- Etiqueta asociada al input con ese id. -->
-                    <input type="text" id="pais" name="pais"
-                           list="lista-paises"
-                           placeholder="Escribe o selecciona un país"
-                           required>
-                    <!-- list conecta con el datalist. required = obligatorio. -->
-
+                    <input type="text" id="pais" name="pais" list="lista-paises" placeholder="Escribe o selecciona un país" required>
                     <datalist id="lista-paises">
-                    <!-- Lista de sugerencias para el campo de país. -->
                         <option value="España">
                         <option value="Francia">
                         <option value="Alemania">
@@ -67,76 +52,55 @@
                     </datalist>
 
                     <label for="ciudad">Ciudad:</label>
-                    <input type="text" id="ciudad" name="ciudad"
-                           placeholder="Ej: Alcalá de Henares" required>
+                    <input type="text" id="ciudad" name="ciudad" placeholder="Ej: Alcalá de Henares" required>
 
-                    <label for="mapa">Enlace al mapa:</label>
-                    <input type="url" id="mapa" name="mapa"
-                           placeholder="https://maps.google.com/..." required>
-                    <!-- type="url": valida formato de URL. -->
+                    <label for="coordenadas">Coordenadas GPS (decimales o GMS):</label>
+                    <input type="text" id="coordenadas" name="coordenadas" placeholder="40.513, -3.3486 o N 40° 30' 45, O 3° 20' 54" required>
+                    <small id="error-coordenadas" class="mensaje-error"></small>
 
                     <label for="foto">Fotografía de la habitación:</label>
                     <input type="file" id="foto" name="foto" accept="image/*">
-                    <!-- accept="image/*": solo permite imágenes. -->
 
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password"
-                           placeholder="Introduce la contraseña" required>
-                    <!-- type="password": oculta los caracteres. -->
+                    <input type="password" id="password" name="password" placeholder="Introduce la contraseña" required>
+                    <small id="indicador-password"></small>
                 </section>
 
                 <section id="config-sensores">
-                <!-- Columna derecha: sensores y umbrales. -->
                     <h2>Seleccione los sensores</h2>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="sensor-temp" name="sensores" value="temperatura" checked>
-                        <label for="sensor-temp">Temperatura</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="sensor-hum" name="sensores" value="humedad" checked>
-                        <label for="sensor-hum">Humedad</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="sensor-sonido" name="sensores" value="sonido">
-                        <label for="sensor-sonido">Nivel de sonido</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="sensor-luz" name="sensores" value="luz">
-                        <label for="sensor-luz">Nivel de luz</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="sensor-mov" name="sensores" value="movimiento">
-                        <label for="sensor-mov">Movimiento</label>
-                    </div>
-                    <!-- name="sensores" los agrupa. checked = marcado por defecto. -->
+                    <div class="checkbox-group"><input type="checkbox" id="sensor-temp" name="sensores" value="temperatura" checked><label for="sensor-temp">Temperatura</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="sensor-hum" name="sensores" value="humedad" checked><label for="sensor-hum">Humedad</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="sensor-sonido" name="sensores" value="sonido"><label for="sensor-sonido">Nivel de sonido</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="sensor-luz" name="sensores" value="luz"><label for="sensor-luz">Nivel de luz</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="sensor-mov" name="sensores" value="movimiento"><label for="sensor-mov">Movimiento</label></div>
 
                     <h3>Configure alertas</h3>
-
                     <label for="temp-max">Temperatura máxima (°C):</label>
-                    <input type="number" id="temp-max" name="temp-max"
-                           min="-20" max="45" step="0.5" value="25">
-                    <!-- min/max: rango permitido. step: decimales. value: inicial. -->
-
+                    <input type="number" id="temp-max" name="temp-max" min="-20" max="45" step="0.5" value="25">
                     <label for="temp-min">Temperatura mínima (°C):</label>
-                    <input type="number" id="temp-min" name="temp-min"
-                           min="-20" max="45" step="0.5" value="15">
+                    <input type="number" id="temp-min" name="temp-min" min="-20" max="45" step="0.5" value="15">
+                    
+                    <label for="temp-actual">Temperatura actual (°C):</label>
+                    <input type="number" id="temp-actual" name="temp-actual" step="0.1" value="23">
 
                     <label for="diferencia">Diferencia (máx − mín):</label>
                     <output id="diferencia" name="diferencia">10</output>
-                    <!-- <output> muestra el resultado calculado por JS. -->
-
                     <p id="mensaje-temp" class="mensaje-error" role="alert"></p>
-                    <!-- Aquí JS escribe el error de temperaturas. -->
                 </section>
             </div>
 
             <div class="form-acciones">
                 <button type="submit">Enviar datos</button>
-                <p id="mensaje-envio" role="alert"></p>
-                <!-- Aquí JS escribe éxito o error. -->
             </div>
         </form>
+
+        <!-- VENTANA MODAL ÚNICA PARA ERRORES -->
+        <div id="modal-error" class="modal">
+            <div class="modal-contenido">
+                <p id="modal-mensaje"></p>
+                <button id="modal-cerrar">Aceptar</button>
+            </div>
+        </div>
 
         <p class="volver">
             <a href="index.html">← Volver a la página principal</a>
@@ -148,6 +112,6 @@
     </main>
 
     <script src="js/datos.js"></script>
-    <!-- Carga el script que procesa el formulario. -->
 </body>
 </html>
+
