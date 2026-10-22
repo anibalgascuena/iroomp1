@@ -22,14 +22,13 @@ var modal = document.getElementById("modal-error");
 var modalMensaje = document.getElementById("modal-mensaje");
 var modalCerrar = document.getElementById("modal-cerrar");
 
-/* MOSTRAR Y OCULTAR MODAL USANDO LA CLASE ACTIVO */
 function mostrarModal(mensaje) {
     modalMensaje.textContent = mensaje;
-    modal.classList.add("activo"); // Activa el CSS display:flex
+    modal.classList.add("activo");
 }
 
 modalCerrar.addEventListener("click", function() {
-    modal.classList.remove("activo"); // Vuelve a display:none
+    modal.classList.remove("activo");
 });
 
 /* INDICADOR DE CONTRASEÑA */
@@ -71,12 +70,13 @@ inputMax.addEventListener("input", actualizarDiferencia);
 inputMin.addEventListener("input", actualizarDiferencia);
 actualizarDiferencia();
 
-/* CONVERSIÓN DE COORDENADAS */
+/* CONVERSIÓN DE COORDENADAS (ARRGLADO PARA ACEPTAR º y °) */
 function parsearCoordenadas(texto) {
     texto = texto.trim();
     
     // Formato decimal: 40.513, -3.3486
-    if (texto.indexOf('°') === -1) {
+    // AHORA COMPRUEBA LOS DOS SÍMBOLOS: ° y º
+    if (texto.indexOf('°') === -1 && texto.indexOf('º') === -1) {
         var partes = texto.split(',');
         if (partes.length !== 2) return null;
         var lat = parseFloat(partes[0].trim().replace(',', '.'));
@@ -169,3 +169,4 @@ formConfig.addEventListener("submit", function(evento) {
         mostrarModal("✓ Datos guardados correctamente.");
     }
 });
+
