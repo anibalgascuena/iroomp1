@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora — Smart Room</title>
     <link rel="stylesheet" href="css/iroom.css">
+    <!-- Estilos específicos para que la calculadora se vea como tal -->
     <style>
-        /* Estilos rápidos para la calculadora */
         .calculadora {
             max-width: 350px;
             margin: 2rem auto;
@@ -24,7 +24,8 @@
             text-align: right;
             border-radius: 4px;
             margin-bottom: 1rem;
-            min-height: 70px;
+            min-height: 80px;
+            overflow: hidden;
         }
         .unidad {
             font-size: 1rem;
@@ -77,6 +78,18 @@
             background-color: #1a3d7c;
             color: white;
         }
+        .btn-limpiar {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background-color: #c00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -99,12 +112,15 @@
             </aside>
         </div>
 
+        <!-- INTERFAZ DE LA CALCULADORA -->
         <section class="calculadora">
+            <!-- Pantalla -->
             <div class="display">
                 <span id="resultado">0</span>
                 <span class="unidad" id="unidad-actual">Unidad: Celsius (°C)</span>
             </div>
 
+            <!-- Botonera de operaciones -->
             <div class="botones">
                 <button onclick="agregarNumero('7')">7</button>
                 <button onclick="agregarNumero('8')">8</button>
@@ -127,15 +143,15 @@
                 <button class="op" onclick="elegirOperacion('+')">+</button>
             </div>
 
+            <!-- Botones de conversión directa -->
             <div class="conversiones">
                 <button onclick="convertir('C')">A °C</button>
                 <button onclick="convertir('K')">A Kelvin</button>
                 <button onclick="convertir('F')">A °F</button>
             </div>
-            
-            <div class="form-acciones" style="margin-top: 1rem;">
-                <button onclick="limpiar()" style="background-color: #c00; color: white; width: 100%;">Limpiar (C)</button>
-            </div>
+
+            <!-- Botón de borrar -->
+            <button class="btn-limpiar" onclick="limpiar()">Limpiar (C)</button>
         </section>
 
         <p class="volver">
@@ -146,7 +162,10 @@
             <p>Universidad de Alcalá</p>
         </footer>
     </main>
+
     <script src="js/calculadora.js"></script>
-    <script src="js/nombre.js"></script>
+    <script src="js/nombre.js"></script> <!-- Para que salga el saludo del nombre -->
 </body>
 </html>
+
+

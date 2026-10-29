@@ -26,6 +26,7 @@
             </aside>
         </div>
 
+        <!-- SECCIÓN 1: GUARDAR NOMBRE (LocalStorage) -->
         <section id="seccion-nombre">
             <h2>Introduce tu nombre</h2>
             <form id="form-nombre">
@@ -38,7 +39,7 @@
             </form>
         </section>
 
-        <!-- NUEVA SECCIÓN: VALIDACIÓN DE EMAIL -->
+        <!-- SECCIÓN 2: VALIDACIÓN DE EMAIL (Apartado 3) -->
         <section id="seccion-email" style="margin-top: 2rem;">
             <h2>Validación de correo electrónico</h2>
             
@@ -46,9 +47,12 @@
             <input type="text" id="email" placeholder="ejemplo@dominio.com">
             
             <div class="form-acciones" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+                <!-- type="button" evita que el formulario se envíe y recargue la página -->
                 <button type="button" id="btn-sin-regex">Validar (Sin Regex)</button>
                 <button type="button" id="btn-con-regex">Validar (Con Regex)</button>
             </div>
+            
+            <!-- Aquí se mostrará el resultado (Válido o Inválido) -->
             <p id="mensaje-email" class="mensaje-error" style="text-align: center; margin-top: 1rem;"></p>
         </section>
 
@@ -60,6 +64,9 @@
             <p>Universidad de Alcalá</p>
         </footer>
     </main>
+
+    <!-- Cargamos el script que gestiona el nombre y el email -->
     <script src="js/nombre.js"></script>
 </body>
 </html>
+
